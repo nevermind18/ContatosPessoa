@@ -1,0 +1,37 @@
+package Professores;
+
+public class ContatoPessoaJuridica extends Contato{
+
+	private String nomeEmpresa;
+	private String cnpj;
+	private String site;
+	
+	public ContatoPessoaJuridica(){
+		
+	}
+	
+	public void setNomeEmpresa(String nomeEmpresa){
+		this.nomeEmpresa = nomeEmpresa;
+	}
+	
+	public String getNomeEmpresa(){
+		return this.nomeEmpresa;
+	}
+	
+	public void setCnpj(String cnpj){
+		this.cnpj = cnpj;
+	}
+	
+	public String getCnpj(){
+		return this.cnpj;
+	}
+	
+	public void setSite(String site){
+		this.site = site;
+	}
+	
+	public String getSite(){
+		return this.site;
+	}
+	
+}
