@@ -1,0 +1,188 @@
+package Professores;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Menu {
+	
+	public void menu(){
+		Scanner tec = new Scanner(System.in);
+		
+		ArrayList<ContatoPessoaFisica> listaContatoPessoaFisica = new ArrayList<>();
+		ArrayList<ContatoPessoaJuridica> listaContatoPessoaJuridica = new ArrayList<>();
+		
+		int opcao;
+	
+		do{
+			System.out.println("Escolha uma opção \n"
+					+ "1 = listar os contatos cadastrados \n"
+					+ "2 = adicionar pessoa fisica \n"
+					+ "3 = adicionar pessoa juridica \n"
+					+ "4 = alterar \n"
+					+ "5 = deletar \n"
+					+ "6 = sair");
+			
+			opcao = tec.nextInt();
+			
+			switch(opcao){
+				
+				case 1:
+					System.out.println("contato das pessoas fisicas");
+					for (int i = 0; i < listaContatoPessoaFisica.size(); i++) {
+						System.out.println((i + 1)  +  ", "
+						+ listaContatoPessoaFisica.get(i).getNome()  +  ", "
+						+	listaContatoPessoaFisica.get(i).getNome() + ", "
+						+ listaContatoPessoaFisica.get(i).getCpf()	+  ", "
+						+	listaContatoPessoaFisica.get(i).getEmail() +  ", "
+						+ listaContatoPessoaFisica.get(i).getTelefone());
+						System.out.println("");
+					}
+					System.out.println("");
+					System.out.println("contato das pessoas juridicas");
+					for (int i = 0; i < listaContatoPessoaJuridica.size(); i++) {
+						System.out.println((i + 1)  +"\n"
+						+ listaContatoPessoaJuridica.get(i).getNome()  + ", "
+						+ listaContatoPessoaJuridica.get(i).getNomeEmpresa() +  ", "
+						+ listaContatoPessoaJuridica.get(i).getTelefone() + ", "
+						+ listaContatoPessoaJuridica.get(i).getEmail() +  ", "
+						+ listaContatoPessoaJuridica.get(i).getCnpj());
+						System.out.println("");
+					}
+					
+					
+					break;
+				
+				case 2:
+					ContatoPessoaFisica fisica = new ContatoPessoaFisica();
+					
+					System.out.println("nome");
+					fisica.setNome(tec.next());
+					System.out.println("Data de nascimento");
+					fisica.setDataNasc(tec.next());
+					System.out.println("email");
+					fisica.setEmail(tec.next());
+					System.out.println("telefone");
+					fisica.setTelefone(tec.next());
+					System.out.println("cpf");
+					fisica.setCpf(tec.next());
+					System.out.println("sexo");
+					fisica.setSexo(tec.next());
+					
+					listaContatoPessoaFisica.add(fisica);
+					break;
+			
+				
+				case 3:
+					ContatoPessoaJuridica juridica = new ContatoPessoaJuridica();
+				
+					System.out.println("nome");
+					juridica.setNome(tec.next());
+					System.out.println("cnpj");
+					juridica.setCnpj(tec.next());
+					System.out.println("email");
+					juridica.setEmail(tec.next());
+					System.out.println("nome da empresa");
+					juridica.setNomeEmpresa(tec.next());
+					System.out.println("site");
+					juridica.setSite(tec.next());
+					System.out.println("telefone");
+					juridica.setTelefone(tec.next());
+					
+					listaContatoPessoaJuridica.add(juridica);
+					break;
+					
+				case 4:
+					
+					System.out.println("1 = pessoa fisica \n"
+							+ "2 = pessoa juridica");
+					int opcaoLista = tec.nextInt();
+					
+					if(opcaoLista == 1){
+						if(listaContatoPessoaFisica.size() > 0){
+							ContatoPessoaFisica fisica1 = new ContatoPessoaFisica();
+						
+							System.out.println("Digite a posição do contato que deseja alterar");
+							int posicao = tec.nextInt() - 1;
+							
+							System.out.println("nome");
+							fisica1.setNome(tec.next());
+							System.out.println("Data de nascimento");
+							fisica1.setDataNasc(tec.next());
+							System.out.println("email");
+							fisica1.setEmail(tec.next());
+							System.out.println("telefone");
+							fisica1.setTelefone(tec.next());
+							System.out.println("cpf");
+							fisica1.setCpf(tec.next());
+							System.out.println("sexo");
+							fisica1.setSexo(tec.next());
+							listaContatoPessoaFisica.set(posicao, fisica1);
+						}else{
+							System.out.println("erro");
+						}
+							
+							
+					}else if(opcaoLista == 2){
+						
+						System.out.println("Digite a posição do contato que deseja alterar");
+						if(listaContatoPessoaFisica.size() > 0){
+							int posicao = tec.nextInt() - 1;
+							
+							ContatoPessoaJuridica juridica1 = new ContatoPessoaJuridica();
+							
+							System.out.println("nome");
+							juridica1.setNome(tec.next());
+							System.out.println("cnpj");
+							juridica1.setCnpj(tec.next());
+							System.out.println("email");
+							juridica1.setEmail(tec.next());
+							System.out.println("nome da empresa");
+							juridica1.setNomeEmpresa(tec.next());
+							System.out.println("site");
+							juridica1.setSite(tec.next());
+							System.out.println("telefone");
+							juridica1.setTelefone(tec.next());
+							
+							listaContatoPessoaJuridica.set(posicao, juridica1);
+						}else{
+							System.out.println("erro");
+						}
+						
+					}else{
+						System.out.println("Erro");
+					}
+					
+					break;
+				case 5:
+					
+						
+					System.out.println("1 = fisica \n"
+							+ "2 = juridica");
+					opcaoLista = tec.nextInt();
+					
+					if(opcaoLista == 1){
+						if(listaContatoPessoaFisica.size() > 0){
+							System.out.println("Digite a posição do contato que deseja alterar");
+							int posicao = tec.nextInt() - 1;
+							listaContatoPessoaFisica.remove(posicao);
+						}else{
+								System.out.println("erro");
+							}
+					 if(opcaoLista == 2){
+							if(listaContatoPessoaJuridica.size() > 0){
+								System.out.println("Digite a posição do contato que deseja alterar");
+								int posicao = tec.nextInt() - 1;
+								listaContatoPessoaJuridica.remove(posicao);
+							}else{
+								System.out.println("erro");
+							}
+						}else{
+							System.out.println("erro");
+						}
+					}
+				break;
+			}
+		}while(opcao != 6);
+	}
+	
+}
